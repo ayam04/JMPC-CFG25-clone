@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { generateGeminiResponse } from "../../../configs/AImodel";
+import { generateGeminiResponse, isAIAvailable } from "../../../configs/AImodel";
 
 const SUFFIX = "\n\nWrite only in 100 words.";
 
@@ -8,7 +8,19 @@ export default function GeminiChat() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]); // { sender: "user" | "gemini", text: string }
   const [loading, setLoading] = useState(false);
+  const [aiAvailable, setAiAvailable] = useState(true);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Check if AI is available when component mounts
+    setAiAvailable(isAIAvailable());
+    if (!isAIAvailable()) {
+      setMessages([{
+        sender: "gemini",
+        text: "AI service is currently unavailable. Please check if the API key is configured properly in your environment variables."
+      }]);
+    }
+  }, []);
 
   const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   useEffect(scrollToBottom, [messages]);
@@ -22,12 +34,26 @@ export default function GeminiChat() {
     setLoading(true);
     setInput("");
 
+    if (!aiAvailable) {
+      setMessages((prev) => [...prev, {
+        sender: "gemini",
+        text: "AI service is currently unavailable. Please check if the API key is configured properly."
+      }]);
+      setLoading(false);
+      return;
+    }
+
     try {
       const prompt = `${input}${SUFFIX}`;
       const response = await generateGeminiResponse(prompt);
       setMessages((prev) => [...prev, { sender: "gemini", text: response }]);
     } catch (err) {
-      setMessages((prev) => [...prev, { sender: "gemini", text: "Error: " + err.message }]);
+      console.error('Gemini chat error:', err);
+      setMessages((prev) => [...prev, { 
+        sender: "gemini", 
+        text: "Sorry, I'm having trouble responding right now. Please try again later or check if the AI service is properly configured." 
+      }]);
+      setAiAvailable(false);
     }
     setLoading(false);
   };

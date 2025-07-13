@@ -1,7 +1,7 @@
 // pages/index.js
 'use client';
 import FocusMap from "@/components/FocusMap";
-import Header from "@/components/Header";
+import Header from "@/components/Header";";
 // import data from '../../data/schoolData'
 
 const data = {

@@ -6,34 +6,36 @@ const StatsHeader = () => {
       icon: Book,
       number: "25+",
       label: "Game Ideas",
-      color: "text-orange-600"
+      color: "from-primary-60 to-primary-80"
     },
     {
       icon: Users,
       number: "5",
       label: "Subject Areas", 
-      color: "text-orange-600"
+      color: "from-secondary-60 to-secondary-80"
     },
     {
       icon: Clock,
       number: "3",
       label: "Grade Levels",
-      color: "text-orange-600"
+      color: "from-tertiary-60 to-tertiary-80"
     },
   ];
 
   return (
-    <div className="bg-orange-500 p-8 mb-8">
+    <div className="md-primary-container p-8 mb-8 md-shape-corner-large">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-white text-center mb-8">
+        <h1 className="md-typescale-display-small md-text-on-primary-container text-center mb-8 font-bold">
           Classroom Game Portal
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 text-center shadow-md">
-              <stat.icon className="w-8 h-8 mx-auto mb-3 text-orange-500" />
-              <div className="text-3xl font-bold text-orange-700 mb-1">{stat.number}</div>
-              <div className="text-orange-600 text-sm font-medium">{stat.label}</div>
+            <div key={index} className="md-surface-container-high md-elevation-1 md-shape-corner-large p-6 text-center">
+              <stat.icon className="w-8 h-8 mx-auto mb-3 md-text-primary" />
+              <div className={`md-typescale-display-small font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
+                {stat.number}
+              </div>
+              <div className="md-typescale-body-medium md-text-on-surface font-medium">{stat.label}</div>
             </div>
           ))}
         </div>

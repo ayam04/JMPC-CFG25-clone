@@ -1,11 +1,9 @@
-/* Material 3 Global Styles - M3 Expressive */
-
-/* Import Google Fonts for Material 3 - Must be at the top */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
-
 @import "tailwindcss";
 
-:root {
+/* Import Google Fonts for Material 3 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+@theme {
   /* Material 3 Design System Color Tokens */
   
   /* Primary Color Palette - Material You Dynamic Color */
@@ -302,7 +300,7 @@
   --space-64: 256px;
 }
 
-/* Dark Theme - M3 Expressive Dark Mode */
+/* Dark Theme */
 @media (prefers-color-scheme: dark) {
   :root {
     /* Material 3 System Colors (Dark Theme) */

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import StatsHeader from '@/components/games/statsHeader';
+import StatsHeader import StatsHeader from '@/components/games/statsHeader';';
 import SubjectFilter from '@/components/games/subjectFilter';
 import GameCard from '@/components/games/GameCard';
 import { games } from '@/data/games';

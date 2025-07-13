@@ -39,31 +39,69 @@
 // main();
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.NEXT_PUBLIC_GEMINI_API,
-});
+// Lazy initialization to avoid errors when API key is not available
+let ai = null;
+let initializationError = null;
+
 const config = {
   responseMimeType: 'text/plain',
 };
 const model = 'gemini-1.5-flash';
 
-export async function generateGeminiResponse(userInput) {
-  const contents = [
-    {
-      role: 'user',
-      parts: [{ text: userInput }],
-    },
-  ];
-
-  const response = await ai.models.generateContentStream({
-    model,
-    config,
-    contents,
-  });
-
-  let result = '';
-  for await (const chunk of response) {
-    result += chunk.text;
+function initializeAI() {
+  if (ai) return ai;
+  
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API;
+  
+  if (!apiKey) {
+    initializationError = 'Gemini API key is not configured. Please set NEXT_PUBLIC_GEMINI_API_KEY in your environment variables.';
+    throw new Error(initializationError);
   }
-  return result;
+
+  try {
+    ai = new GoogleGenAI({
+      apiKey: apiKey,
+    });
+    return ai;
+  } catch (error) {
+    initializationError = `Failed to initialize Gemini AI: ${error.message}`;
+    throw new Error(initializationError);
+  }
+}
+
+export async function generateGeminiResponse(userInput) {
+  try {
+    const aiInstance = initializeAI();
+    
+    const contents = [
+      {
+        role: 'user',
+        parts: [{ text: userInput }],
+      },
+    ];
+
+    const response = await aiInstance.models.generateContentStream({
+      model,
+      config,
+      contents,
+    });
+
+    let result = '';
+    for await (const chunk of response) {
+      result += chunk.text;
+    }
+    return result;
+  } catch (error) {
+    console.error('Gemini API Error:', error.message);
+    throw new Error(`AI service unavailable: ${error.message}`);
+  }
+}
+
+export function isAIAvailable() {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API;
+    return !!apiKey;
+  } catch {
+    return false;
+  }
 }

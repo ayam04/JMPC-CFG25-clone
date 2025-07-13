@@ -27,19 +27,31 @@ const ReviewCard = ({ review, animate }) => (
         : "opacity-0 translate-y-8 scale-95"
     }`}
   >
-    <div className="w-72 h-72 min-w-[18rem] min-h-[18rem] max-w-[18rem] max-h-[18rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-200 bg-white">
+    <div className="w-72 h-72 min-w-[18rem] min-h-[18rem] max-w-[18rem] max-h-[18rem] md-shape-corner-extra-large overflow-hidden md-elevation-2 md-surface-container group">
       <img
         src={review.image}
         alt={review.name}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         style={{ aspectRatio: "1 / 1" }}
       />
     </div>
-    <div className="bg-white rounded-2xl shadow-2xl p-10 flex-1 border-2 border-orange-100">
-      <p className="text-gray-700 text-2xl mb-4 font-medium leading-relaxed">
+    <div className="md-surface-container md-elevation-1 md-shape-corner-large p-10 flex-1 relative">
+      <div className="absolute top-0 left-0 w-8 h-8 md-primary-container md-shape-corner-full flex items-center justify-center text-xl transform -translate-x-4 -translate-y-4">
+        💬
+      </div>
+      
+      <p className="md-typescale-body-large md-text-on-surface mb-6 font-medium leading-relaxed">
         "{review.text}"
       </p>
-      <span className="text-orange-600 font-bold text-xl">{review.name}</span>
+      
+      <div className="flex items-center gap-4">
+        <div className="flex text-primary-60">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className="text-lg">⭐</span>
+          ))}
+        </div>
+        <span className="md-typescale-title-medium md-text-primary font-bold">{review.name}</span>
+      </div>
     </div>
   </div>
 );
@@ -86,41 +98,66 @@ const ReviewsPage = () => {
   };
 
   return (
-    <section className="min-h-screen bg-orange-50 flex flex-col items-center justify-center px-4 py-24">
-      <h2 className="text-4xl font-bold text-orange-600 mb-14 text-center">
-        What Our Students Say
-      </h2>
-      <div className="w-full max-w-4xl flex flex-col items-center">
-        <div className="relative w-full min-h-[22rem]">
-          <ReviewCard review={reviews[current]} animate={animate} />
-          <button
-            onClick={prevReview}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-orange-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:bg-orange-600 transition text-2xl"
+    <section className="min-h-screen md-surface flex flex-col items-center justify-center px-4 py-24 relative overflow-hidden">
+      {/* Material 3 Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-10 w-80 h-80 bg-gradient-to-br from-primary-60/5 to-tertiary-60/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-gradient-to-tl from-secondary-60/5 to-primary-60/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-6xl">
+        {/* Material 3 Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-6 py-3 md-surface-container-highest md-elevation-1 rounded-full mb-8">
+            <span className="text-2xl">🗣️</span>
+            <span className="md-typescale-label-large md-text-on-surface font-medium">
+              Student Voices
+            </span>
+          </div>
+          
+          <h2 className="md-typescale-display-medium md-text-on-surface font-bold text-center">
+            <span className="bg-gradient-to-r from-primary-60 via-secondary-60 to-tertiary-60 bg-clip-text text-transparent">
+              What Our Students Say
+            </span>
+          </h2>
+        </div>
+
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+          <div className="relative w-full min-h-[22rem]">
+            <ReviewCard review={reviews[current]} animate={animate} />
+            <button
+              onClick={prevReview}
+              className="absolute left-0 top-1/2 -translate-y-1/2 md-fab md-fab-small md-primary-container md-ripple-surface flex items-center justify-center text-2xl"
             aria-label="Previous Review"
           >
             &#8592;
           </button>
           <button
             onClick={nextReview}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-orange-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:bg-orange-600 transition text-2xl"
+            className="absolute right-0 top-1/2 -translate-y-1/2 md-fab md-fab-small md-primary-container md-ripple-surface flex items-center justify-center text-2xl"
             aria-label="Next Review"
           >
             &#8594;
           </button>
         </div>
-        <div className="flex gap-3 mt-6">
+        
+        {/* Material 3 Dot Navigation */}
+        <div className="flex gap-3 mt-6 justify-center">
           {reviews.map((_, idx) => (
             <button
               key={idx}
               onClick={() => goToReview(idx)}
-              className={`w-4 h-4 rounded-full border-2 border-orange-400 ${
-                current === idx ? "bg-orange-600" : "bg-orange-200"
-              } transition`}
+              className={`w-4 h-4 md-shape-corner-full transition-all duration-300 ${
+                current === idx 
+                  ? "md-primary-container md-elevation-1 scale-125" 
+                  : "md-outline hover:md-surface-container-high"
+              }`}
               aria-label={`Go to review ${idx + 1}`}
             />
           ))}
         </div>
       </div>
+    </div>
     </section>
   );
 };

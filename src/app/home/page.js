@@ -13,20 +13,21 @@ import EventNotifier from "@/components/EventNotifier";
 
 export default function Home() {
   return (
-    <div>
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start"></main>
-      <Header className="row-start-1 w-full " />
-      <CoverPage />
-      <EventsSection />
-      {/* <ActivityCard /> */}
-      <ImpactSection />
-      <VolunteersSection />
-      <ReviewsPage />
-      <OurSupporters />
+    <div className="md-surface">
+      <Header className="sticky top-0 z-50" />
+      <main className="relative">
+        <CoverPage />
+        <EventsSection />
+        <ImpactSection />
+        <VolunteersSection />
+        <ReviewsPage />
+        <OurSupporters />
+      </main>
       <Footer />
       
-      {/* Add the floating chat widget */}
+      {/* Material 3 Floating Elements */}
       <FloatingChatWidget />
+      <EventNotifier />
     </div>
   );
 }

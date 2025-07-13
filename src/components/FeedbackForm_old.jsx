@@ -34,7 +34,7 @@ const FeedbackComponent = () => {
 
       setTimeout(() => {
         setShowSuccess(false);
-      }, 3000);
+      }, 3000); // Animation visible for 3s
     }, 500);
   };
 
@@ -66,6 +66,7 @@ const FeedbackComponent = () => {
           </h2>
         </div>
 
+        {/* Success animation */}
         {/* Material 3 Success Overlay */}
         {showSuccess && (
           <div className="absolute inset-0 md-surface/90 flex items-center justify-center z-10 animate-fade-in md-shape-corner-large">
@@ -107,6 +108,9 @@ const FeedbackComponent = () => {
             required
             className="p-4 md-shape-corner-small border border-outline focus:border-primary md-text-on-surface bg-surface-container-highest focus:outline-none transition-colors duration-200"
           />
+            required
+            className="p-4 md-shape-corner-small border border-outline focus:border-primary md-text-on-surface bg-surface-container-highest focus:outline-none transition-colors duration-200"
+          />
           <input
             type="email"
             name="email"
@@ -129,46 +133,45 @@ const FeedbackComponent = () => {
 
         {/* Material 3 Star Rating */}
         <div className="mb-8">
-          <p className="md-typescale-title-medium md-text-on-surface font-medium mb-4 text-center">
+          <p className="md-typescale-title-medium md-text-on-surface font-medium mb-4">
             Rate Your Experience:
           </p>
-          <div className="flex gap-2 justify-center">
-            {[1, 2, 3, 4, 5].map((star) => (
+          <div className="flex gap-2 justify-center">{[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
                 size={32}
-                className={`cursor-pointer transition-all duration-200 ${
-                  star <= (hoverRating || rating)
-                    ? "fill-primary-60 md-text-primary"
-                    : "md-text-outline hover:md-text-primary"
-                }`}
-                onClick={() => setRating(star)}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
+                onClick={() => setRating(star)}
+                className={`cursor-pointer transition-transform duration-200 ${
+                  (hoverRating || rating) >= star
+                    ? "fill-orange-500 text-orange-500 scale-110"
+                    : "text-gray-300"
+                }`}
               />
             ))}
           </div>
         </div>
 
-        {/* Material 3 Feedback Text */}
-        <div className="mb-8">
+        {/* Feedback Text */}
+        <div className="mb-6">
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             placeholder="Share your feedback..."
             required
-            rows={5}
-            className="w-full p-4 md-shape-corner-small border border-outline focus:border-primary md-text-on-surface bg-surface-container-highest focus:outline-none transition-colors duration-200 resize-none"
+            rows={4}
+            className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
 
-        {/* Material 3 Submit Button */}
+        {/* Submit Button */}
         <div className="text-center">
           <button
             type="submit"
             disabled={showSuccess}
-            className="md-filled-button px-8 py-4 md-typescale-label-large font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded font-semibold transition"
           >
             Submit Feedback
           </button>

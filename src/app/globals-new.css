@@ -1,14 +1,13 @@
 /* Material 3 Global Styles - M3 Expressive */
-
-/* Import Google Fonts for Material 3 - Must be at the top */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
-
 @import "tailwindcss";
 
-:root {
-  /* Material 3 Design System Color Tokens */
+/* Import Google Fonts for Material 3 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
+
+@theme {
+  /* Material 3 Expressive Color Palette - Dynamic Color System */
   
-  /* Primary Color Palette - Material You Dynamic Color */
+  /* Primary Color Palette - Vibrant Purple-Blue */
   --color-primary-10: oklch(0.21 0.182 285.75);
   --color-primary-20: oklch(0.29 0.192 285.75);
   --color-primary-30: oklch(0.37 0.202 285.75);
@@ -22,7 +21,7 @@
   --color-primary-99: oklch(0.98 0.042 285.75);
   --color-primary-100: oklch(1 0 285.75);
 
-  /* Secondary Color Palette */
+  /* Secondary Color Palette - Complementary Blue */
   --color-secondary-10: oklch(0.21 0.082 260);
   --color-secondary-20: oklch(0.29 0.092 260);
   --color-secondary-30: oklch(0.37 0.102 260);
@@ -36,7 +35,7 @@
   --color-secondary-99: oklch(0.98 0.022 260);
   --color-secondary-100: oklch(1 0 260);
 
-  /* Tertiary Color Palette */
+  /* Tertiary Color Palette - Energetic Green */
   --color-tertiary-10: oklch(0.21 0.082 120);
   --color-tertiary-20: oklch(0.29 0.092 120);
   --color-tertiary-30: oklch(0.37 0.102 120);
@@ -64,7 +63,7 @@
   --color-error-99: oklch(0.99 0.042 27);
   --color-error-100: oklch(1 0 27);
 
-  /* Neutral Color Palette */
+  /* Neutral Color Palette - Enhanced for M3 Expressive */
   --color-neutral-0: oklch(0 0 0);
   --color-neutral-4: oklch(0.09 0.005 285.75);
   --color-neutral-6: oklch(0.13 0.007 285.75);
@@ -147,11 +146,11 @@
   --color-scrim: var(--color-neutral-0);
   --color-shadow: var(--color-neutral-0);
 
-  /* Material 3 Typography Scale */
+  /* Material 3 Expressive Typography Scale */
   --font-family-sans: 'Roboto', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
   
-  /* Display Typography */
+  /* Display Typography - Bold and Expressive */
   --font-size-display-large: 3.5rem;
   --line-height-display-large: 4rem;
   --font-weight-display-large: 400;
@@ -231,7 +230,7 @@
   --font-weight-body-small: 400;
   --letter-spacing-body-small: 0.4px;
 
-  /* Material 3 Elevation Tokens */
+  /* Material 3 Expressive Elevation System */
   --elevation-0: none;
   --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
@@ -239,7 +238,7 @@
   --elevation-4: 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 4px rgba(0, 0, 0, 0.15);
   --elevation-5: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 8px 12px 6px rgba(0, 0, 0, 0.15);
 
-  /* Material 3 Shape Tokens */
+  /* Material 3 Expressive Shape System - Extended */
   --shape-corner-none: 0px;
   --shape-corner-extra-small: 4px;
   --shape-corner-small: 8px;
@@ -247,14 +246,21 @@
   --shape-corner-large: 16px;
   --shape-corner-extra-large: 28px;
   --shape-corner-full: 9999px;
+  
+  /* M3 Expressive Shape Extensions */
+  --shape-corner-organic-small: 12px 4px 12px 4px;
+  --shape-corner-organic-medium: 24px 8px 24px 8px;
+  --shape-corner-organic-large: 40px 12px 40px 12px;
+  --shape-corner-asymmetric: 0px 16px 0px 16px;
 
   /* Material 3 State Layer Opacity */
   --state-hover-opacity: 0.08;
   --state-focus-opacity: 0.12;
   --state-pressed-opacity: 0.12;
   --state-dragged-opacity: 0.16;
+  --state-selected-opacity: 0.08;
 
-  /* Material 3 Motion Tokens */
+  /* Material 3 Expressive Motion System - Physics-based */
   --motion-duration-short1: 50ms;
   --motion-duration-short2: 100ms;
   --motion-duration-short3: 150ms;
@@ -272,13 +278,16 @@
   --motion-duration-extra-long3: 900ms;
   --motion-duration-extra-long4: 1000ms;
 
+  /* M3 Expressive Motion Curves */
   --motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
   --motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
   --motion-easing-legacy: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-easing-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --motion-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  /* Spacing Scale */
+  /* Material 3 Spacing Scale */
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -304,7 +313,7 @@
 
 /* Dark Theme - M3 Expressive Dark Mode */
 @media (prefers-color-scheme: dark) {
-  :root {
+  @theme {
     /* Material 3 System Colors (Dark Theme) */
     --color-primary: var(--color-primary-80);
     --color-on-primary: var(--color-primary-20);
@@ -470,7 +479,7 @@
   letter-spacing: var(--letter-spacing-body-small);
 }
 
-/* Material 3 Surface & Elevation Classes */
+/* Material 3 Surface & Container Classes */
 .md-surface {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
@@ -529,7 +538,7 @@
 .md-elevation-4 { box-shadow: var(--elevation-4); }
 .md-elevation-5 { box-shadow: var(--elevation-5); }
 
-/* Material 3 Shape Classes */
+/* Material 3 Expressive Shape Classes */
 .md-shape-corner-none { border-radius: var(--shape-corner-none); }
 .md-shape-corner-extra-small { border-radius: var(--shape-corner-extra-small); }
 .md-shape-corner-small { border-radius: var(--shape-corner-small); }
@@ -538,10 +547,18 @@
 .md-shape-corner-extra-large { border-radius: var(--shape-corner-extra-large); }
 .md-shape-corner-full { border-radius: var(--shape-corner-full); }
 
-/* Material 3 Component Utilities */
+/* M3 Expressive Shape Variations */
+.md-shape-organic-small { border-radius: var(--shape-corner-organic-small); }
+.md-shape-organic-medium { border-radius: var(--shape-corner-organic-medium); }
+.md-shape-organic-large { border-radius: var(--shape-corner-organic-large); }
+.md-shape-asymmetric { border-radius: var(--shape-corner-asymmetric); }
+
+/* Material 3 Expressive Ripple System */
 .md-ripple-surface {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
 }
 
 .md-ripple-surface::before {
@@ -553,7 +570,8 @@
   bottom: 0;
   background-color: currentColor;
   opacity: 0;
-  transition: opacity var(--motion-duration-short4) var(--motion-easing-standard);
+  transition: opacity var(--motion-duration-short2) var(--motion-easing-standard);
+  pointer-events: none;
 }
 
 .md-ripple-surface:hover::before {
@@ -568,209 +586,157 @@
   opacity: var(--state-pressed-opacity);
 }
 
-/* Material 3 Button Base Styles */
+/* Material 3 Expressive Button System */
 .md-button-base {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  min-height: 40px;
-  padding: 0 var(--space-6);
+  padding: 10px 24px;
   border: none;
   cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: all var(--motion-duration-short2) var(--motion-easing-emphasized);
+  position: relative;
+  overflow: hidden;
   font-family: var(--font-family-sans);
   font-size: var(--font-size-label-large);
   font-weight: var(--font-weight-label-large);
-  letter-spacing: var(--letter-spacing-label-large);
   line-height: var(--line-height-label-large);
-  text-decoration: none;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  letter-spacing: var(--letter-spacing-label-large);
 }
 
 .md-filled-button {
+  @extend .md-button-base;
   background-color: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: var(--shape-corner-full);
   box-shadow: var(--elevation-0);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-height: 40px;
-  padding: 0 var(--space-6);
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label-large);
-  font-weight: var(--font-weight-label-large);
-  letter-spacing: var(--letter-spacing-label-large);
-  line-height: var(--line-height-label-large);
-  text-decoration: none;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .md-filled-button:hover {
   box-shadow: var(--elevation-1);
+  transform: translateY(-1px);
 }
 
 .md-filled-button:focus {
-  box-shadow: var(--elevation-0);
+  box-shadow: var(--elevation-1);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .md-filled-button:active {
   box-shadow: var(--elevation-0);
+  transform: translateY(0);
 }
 
 .md-outlined-button {
+  @extend .md-button-base;
   background-color: transparent;
   color: var(--color-primary);
   border: 1px solid var(--color-outline);
   border-radius: var(--shape-corner-full);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-height: 40px;
-  padding: 0 var(--space-6);
-  cursor: pointer;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label-large);
-  font-weight: var(--font-weight-label-large);
-  letter-spacing: var(--letter-spacing-label-large);
-  line-height: var(--line-height-label-large);
-  text-decoration: none;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .md-outlined-button:hover {
   background-color: color-mix(in srgb, var(--color-primary) var(--state-hover-opacity), transparent);
+  border-color: var(--color-primary);
 }
 
 .md-text-button {
+  @extend .md-button-base;
   background-color: transparent;
   color: var(--color-primary);
   border-radius: var(--shape-corner-full);
-  padding: 0 var(--space-3);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-height: 40px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label-large);
-  font-weight: var(--font-weight-label-large);
-  letter-spacing: var(--letter-spacing-label-large);
-  line-height: var(--line-height-label-large);
-  text-decoration: none;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  padding: 10px 16px;
 }
 
 .md-text-button:hover {
   background-color: color-mix(in srgb, var(--color-primary) var(--state-hover-opacity), transparent);
 }
 
+/* Material 3 Expressive FAB */
 .md-fab {
-  width: 56px;
-  height: 56px;
-  min-height: 56px;
-  padding: 0;
-  background-color: var(--color-primary-container);
-  color: var(--color-on-primary-container);
-  border-radius: var(--shape-corner-large);
-  box-shadow: var(--elevation-3);
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  width: 56px;
+  height: 56px;
   border: none;
+  border-radius: var(--shape-corner-large);
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
   cursor: pointer;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label-large);
-  font-weight: var(--font-weight-label-large);
-  letter-spacing: var(--letter-spacing-label-large);
-  line-height: var(--line-height-label-large);
-  text-decoration: none;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--elevation-3);
+  transition: all var(--motion-duration-short2) var(--motion-easing-emphasized);
 }
 
 .md-fab:hover {
   box-shadow: var(--elevation-4);
+  transform: scale(1.05);
 }
 
 .md-fab.md-fab-small {
   width: 40px;
   height: 40px;
-  min-height: 40px;
+  border-radius: var(--shape-corner-medium);
 }
 
 .md-fab.md-fab-large {
   width: 96px;
   height: 96px;
-  min-height: 96px;
+  border-radius: var(--shape-corner-extra-large);
 }
 
-/* Material 3 Card Styles */
+/* Material 3 Expressive Card System */
 .md-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-container-low);
-  color: var(--color-on-surface);
   border-radius: var(--shape-corner-medium);
-  box-shadow: var(--elevation-1);
+  transition: all var(--motion-duration-short3) var(--motion-easing-emphasized);
   overflow: hidden;
-  transition: all var(--motion-duration-short4) var(--motion-easing-standard);
+  position: relative;
 }
 
 .md-card:hover {
-  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
 }
 
 .md-card.md-card-elevated {
   background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
   box-shadow: var(--elevation-1);
+}
+
+.md-card.md-card-elevated:hover {
+  box-shadow: var(--elevation-2);
 }
 
 .md-card.md-card-filled {
   background-color: var(--color-surface-container-highest);
-  box-shadow: var(--elevation-0);
+  color: var(--color-on-surface);
 }
 
 .md-card.md-card-outlined {
   background-color: var(--color-surface);
+  color: var(--color-on-surface);
   border: 1px solid var(--color-outline-variant);
-  box-shadow: var(--elevation-0);
 }
 
-/* Base Styles */
+/* Base Styles with M3 Expressive Enhancements */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-body-medium);
   line-height: var(--line-height-body-medium);
-  letter-spacing: var(--letter-spacing-body-medium);
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -781,17 +747,19 @@ html {
 
 /* Custom Scrollbar with Material 3 Styling */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--color-surface-container);
+  border-radius: var(--shape-corner-small);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-outline);
-  border-radius: var(--shape-corner-full);
-  border: 2px solid var(--color-surface-container);
+  border-radius: var(--shape-corner-small);
+  transition: background-color var(--motion-duration-short2) var(--motion-easing-standard);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -802,11 +770,12 @@ html {
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  border-radius: var(--shape-corner-extra-small);
 }
 
 /* Text Selection */
 ::selection {
-  background-color: color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
   color: var(--color-on-surface);
 }
 
@@ -818,18 +787,22 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
-  :root {
-    --color-outline: var(--color-neutral-20);
-    --color-outline-variant: var(--color-neutral-30);
+  .md-outlined-button {
+    border-width: 2px;
+  }
+  
+  .md-card.md-card-outlined {
+    border-width: 2px;
   }
 }
 
-/* Material 3 Animation Classes */
+/* Material 3 Expressive Animation Classes */
 .md-motion-emphasized {
   transition-timing-function: var(--motion-easing-emphasized);
 }
@@ -844,6 +817,14 @@ html {
 
 .md-motion-emphasized-accelerate {
   transition-timing-function: var(--motion-easing-emphasized-accelerate);
+}
+
+.md-motion-spring {
+  transition-timing-function: var(--motion-easing-spring);
+}
+
+.md-motion-bounce {
+  transition-timing-function: var(--motion-easing-bounce);
 }
 
 /* Material 3 Layout Classes */
@@ -863,7 +844,7 @@ html {
   gap: var(--space-4);
 }
 
-/* Material 3 Utility Classes */
+/* Material 3 Text Color Utilities */
 .md-text-primary {
   color: var(--color-primary);
 }
@@ -904,57 +885,80 @@ html {
 .md-space-10 { gap: var(--space-10); }
 .md-space-12 { gap: var(--space-12); }
 
-/* Material 3 Express Motion Keyframes */
+/* Material 3 Expressive Keyframes */
 @keyframes md-emphasis-decelerate {
   0% {
-    transform: scale(0.8);
     opacity: 0;
+    transform: scale(0.8) translateY(20px);
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
 @keyframes md-emphasis-accelerate {
   0% {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1) translateY(0);
   }
   100% {
-    transform: scale(0.95);
     opacity: 0;
+    transform: scale(0.8) translateY(-20px);
   }
 }
 
 @keyframes md-standard-enter {
   0% {
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(16px);
   }
   100% {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes md-standard-exit {
   0% {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(-20px);
     opacity: 0;
+    transform: translateY(-16px);
   }
 }
 
 @keyframes md-float {
-  0%, 100% { 
-    transform: translateY(0px); 
+  0%, 100% {
+    transform: translateY(0px);
   }
-  50% { 
-    transform: translateY(-8px); 
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes md-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes md-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
   }
 }
 
@@ -968,13 +972,126 @@ html {
 }
 
 .md-animate-standard-enter {
-  animation: md-standard-enter var(--motion-duration-medium2) var(--motion-easing-standard) forwards;
+  animation: md-standard-enter var(--motion-duration-medium1) var(--motion-easing-standard) forwards;
 }
 
 .md-animate-standard-exit {
-  animation: md-standard-exit var(--motion-duration-medium2) var(--motion-easing-standard) forwards;
+  animation: md-standard-exit var(--motion-duration-medium1) var(--motion-easing-standard) forwards;
 }
 
 .md-animate-float {
   animation: md-float 3s ease-in-out infinite;
+}
+
+.md-animate-pulse {
+  animation: md-pulse 2s ease-in-out infinite;
+}
+
+.md-animate-shake {
+  animation: md-shake 0.5s ease-in-out;
+}
+
+/* Material 3 Expressive Progress Indicators */
+.md-linear-progress {
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-surface-container-highest);
+  border-radius: var(--shape-corner-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.md-linear-progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--shape-corner-full);
+  transition: width var(--motion-duration-medium3) var(--motion-easing-emphasized);
+}
+
+.md-circular-progress {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--color-surface-container-highest);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Material 3 Expressive Toolbar Component */
+.md-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-surface-container);
+  border-radius: var(--shape-corner-large);
+  gap: var(--space-3);
+  box-shadow: var(--elevation-2);
+}
+
+.md-toolbar-actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+/* Material 3 Expressive Split Button */
+.md-split-button {
+  display: inline-flex;
+  border-radius: var(--shape-corner-full);
+  overflow: hidden;
+  box-shadow: var(--elevation-1);
+  transition: all var(--motion-duration-short2) var(--motion-easing-emphasized);
+}
+
+.md-split-button:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-1px);
+}
+
+.md-split-button-main {
+  @extend .md-button-base;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: 0;
+  padding: 10px 20px;
+}
+
+.md-split-button-dropdown {
+  @extend .md-button-base;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: 0;
+  padding: 10px;
+  border-left: 1px solid color-mix(in srgb, var(--color-on-primary) 20%, transparent);
+}
+
+/* Material 3 Expressive Button Groups */
+.md-button-group {
+  display: inline-flex;
+  border-radius: var(--shape-corner-full);
+  overflow: hidden;
+  box-shadow: var(--elevation-1);
+}
+
+.md-button-group .md-button-base {
+  border-radius: 0;
+  border-right: 1px solid var(--color-outline-variant);
+}
+
+.md-button-group .md-button-base:last-child {
+  border-right: none;
+}
+
+.md-button-group .md-button-base:hover {
+  z-index: 1;
+  position: relative;
+  border-radius: var(--shape-corner-small);
+  margin: -1px;
+  border: 1px solid var(--color-primary);
 }

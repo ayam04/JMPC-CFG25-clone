@@ -1,104 +1,122 @@
-"use client";
-import React from "react";
-import Link from "next/link";
+'use client';
 
-const Header = () => (
-  <header
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      background: "white",
-      padding: "1rem 2.5rem",
-      color: "#ff6600",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      zIndex: 1000,
-      boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    }}
-  >
-    <div className="flex items-center gap-4 font-bold text-2xl">
-      <img
-        src={"/logo.png"}
-        alt="Logo"
-        style={{ height: "56px", width: "56px", objectFit: "contain" }}
-      />
-      <h1>VigyanSaathi</h1>
-    </div>
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { useRouter, usePathname } from "next/navigation";
+import { Book, Gamepad, Calendar, Video, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
-    <nav>
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-          gap: "2rem",
-          alignItems: "center",
-        }}
-      >
-        <li>
-          <a
-            href="#about"
-            style={{
-              color: "#ff6600",
-              textDecoration: "none",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-            }}
+const Header = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const navigationItems = [
+    {
+      title: "Schedule",
+      path: "/schedule",
+      icon: Calendar,
+      description: "View and manage your teaching schedule"
+    },
+    {
+      title: "Curate Quiz",
+      path: "/assesment",
+      icon: Book,
+      description: "Create engaging quizzes for your students"
+    },
+    {
+      title: "Training Videos", 
+      path: "/resources",
+      icon: Video,
+      description: "Watch instructional videos and training materials"
+    },
+    {
+      title: "Educational Games",
+      path: "/games", 
+      icon: Gamepad,
+      description: "Access interactive educational games"
+    },
+    {
+      title: "Attendance",
+      path: "/attendence", 
+      icon: Users,
+      description: "Track student attendance"
+    }
+  ];
+
+  return (
+    <header className="md-surface-container-low md-elevation-1 px-6 py-4 flex items-center justify-between backdrop-blur-md border-b border-outline-variant/10">
+      <div className="flex items-center space-x-8">
+        <motion.div 
+          className="flex items-center space-x-4 cursor-pointer md-ripple-surface md-shape-corner-medium px-3 py-2" 
+          onClick={() => router.push("/")}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <motion.div 
+            className="w-12 h-12 md-primary-container md-shape-corner-large flex items-center justify-center"
+            whileHover={{ rotate: 5 }}
+            transition={{ duration: 0.3 }}
           >
-            About
-          </a>
-        </li>
-        <li>
-          <a
-            href="#impact"
-            style={{
-              color: "#ff6600",
-              textDecoration: "none",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-            }}
+            <span className="md-typescale-title-large md-text-on-primary-container font-bold">VS</span>
+          </motion.div>
+          <div>
+            <h1 className="md-typescale-title-large md-text-on-surface font-bold">VigyanSaathi</h1>
+            <p className="md-typescale-body-small md-text-on-surface-variant">Empowering Education Together</p>
+          </div>
+        </motion.div>
+        
+        <NavigationMenu>
+          <NavigationMenuList className="md-space-2">
+            {navigationItems.map((item) => (
+              <NavigationMenuItem key={item.path}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <NavigationMenuLink
+                    className={`group inline-flex h-12 w-max items-center justify-center md-shape-corner-full md-typescale-label-large px-6 py-3 transition-all duration-300 md-ripple-surface cursor-pointer border ${
+                      pathname === item.path 
+                        ? 'md-secondary-container md-text-on-secondary-container border-transparent md-elevation-1' 
+                        : 'hover:md-surface-container-high md-text-on-surface border-transparent hover:border-outline-variant/20'
+                    }`}
+                    onClick={() => router.push(item.path)}
+                  >
+                    <item.icon className="w-5 h-5 mr-3" />
+                    {item.title}
+                  </NavigationMenuLink>
+                </motion.div>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+      
+      <div className="flex items-center gap-4">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Button 
+            variant="outline" 
+            size="sm"
+            className="md-outlined-button md-typescale-label-large border-outline hover:md-surface-container-high"
           >
-            Impact
-          </a>
-        </li>
-        <li>
-          <a
-            href="#get-involved"
-            style={{
-              color: "#ff6600",
-              textDecoration: "none",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-            }}
-          >
-            Get Involved
-          </a>
-        </li>
-        <li>
-          <Link href="/sign-in/a">
-            <button
-              style={{
-                background: "#ff6600",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                padding: "0.7rem 1.3rem",
-                cursor: "pointer",
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-              }}
-            >
-              Login
-            </button>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  </header>
-);
+            Help & Support
+          </Button>
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Avatar className="md-shape-corner-full w-12 h-12 border-2 border-outline-variant">
+            <AvatarImage src="" alt="Volunteer" />
+            <AvatarFallback className="md-primary-container md-text-on-primary-container md-typescale-label-large font-bold">VT</AvatarFallback>
+          </Avatar>
+        </motion.div>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

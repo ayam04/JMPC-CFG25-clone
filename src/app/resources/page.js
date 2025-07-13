@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SubjectSelector from '../../components/SubjectSelector';
 import syllabusData from '../../utils/syllabusData'; // Import syllabus data
-import Header from '@/components/navbar/header';
+import Header from '@/components/navbar/header';';
 
 function ResourcesPage() {
   const [selectedStandard, setSelectedStandard] = useState('');

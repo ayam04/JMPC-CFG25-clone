@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Header from "@/components/navbar/header";
+import Header from "@/components/navbar/header";";
 import Head from "next/head";
 import WebcamCapture from "../../components/WebcamCapture";
 

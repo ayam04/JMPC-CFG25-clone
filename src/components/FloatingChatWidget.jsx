@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { generateGeminiResponse } from "../../configs/AImodel";
+import { generateGeminiResponse, isAIAvailable } from "../../configs/AImodel";
 
 const SUFFIX = "\n\nWrite only in 100 words.";
 
@@ -9,7 +9,13 @@ export default function FloatingChatWidget() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [aiAvailable, setAiAvailable] = useState(true);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Check if AI is available when component mounts
+    setAiAvailable(isAIAvailable());
+  }, []);
 
   const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   useEffect(scrollToBottom, [messages]);
@@ -17,6 +23,15 @@ export default function FloatingChatWidget() {
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
+
+    if (!aiAvailable) {
+      setMessages((prev) => [...prev, 
+        { sender: "user", text: input },
+        { sender: "gemini", text: "AI service is currently unavailable. Please check if the API key is configured properly." }
+      ]);
+      setInput("");
+      return;
+    }
 
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
@@ -28,7 +43,13 @@ export default function FloatingChatWidget() {
       const response = await generateGeminiResponse(prompt);
       setMessages((prev) => [...prev, { sender: "gemini", text: response }]);
     } catch (err) {
-      setMessages((prev) => [...prev, { sender: "gemini", text: "Error: " + err.message }]);
+      console.error('Chat error:', err);
+      setMessages((prev) => [...prev, { 
+        sender: "gemini", 
+        text: "Sorry, I'm having trouble responding right now. Please try again later or check if the AI service is properly configured." 
+      }]);
+      // Update AI availability status
+      setAiAvailable(false);
     }
     setLoading(false);
   };
